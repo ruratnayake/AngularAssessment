@@ -1,0 +1,42 @@
+﻿<div data-ng-controller="movieDetailsCtrl as vm">
+    <div class="movies-container movie-tile">
+        <table>
+            <tr>
+                <td width="5%"></td>
+                <td width="70%"><h2>{{vm.movie.Title}}</h2></td>
+                <td width="20%" align="right">Rating: <star-rating-display rating='vm.movie.Rating'> </star-rating-display></td>
+                <td width="5%"></td>
+            </tr>
+            <tr>
+                <td width="5%"></td>
+                <td width="70%">
+                    <div>{{vm.movie.Description}}</div>
+                    <div>
+                        <br />
+                        <div><b>Directed by: </b>{{vm.movie.Director}}</div>
+                        <div><b>Release date: </b>{{vm.movie.ReleaseDate | date : 'yyyy/MM/dd'}}</div>
+                        <div><b>Language: </b>{{vm.movie.Language}}</div>
+                    </div>
+                    <div>
+                        <h3>Characters</h3>
+                        <ul>
+                            <li ng-repeat="item in vm.movie.Cast">
+                                {{item.Role + " (" + item.Actor + ")"}}
+                            </li>
+                        </ul>
+                    </div>
+
+                </td>
+                <td width="20%"></td>
+                <td width="5%"></td>
+            </tr>
+            <tr>
+                <td width="5%"></td>
+                <td width="70%"></td>
+                <td width="20%"></td>
+                <td width="5%"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<br />

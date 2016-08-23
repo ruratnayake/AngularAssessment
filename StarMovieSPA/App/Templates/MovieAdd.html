@@ -1,0 +1,121 @@
+﻿<div ng-controller="movieAddCtrl as vm" class="movies-container container-border margin-top">
+    <h2 class="title-margin-left">{{vm.title}}</h2>
+
+    <div class="">
+        <div ng-form="vm.movieDetailForm" class="movies-container">
+            <table>
+                <tr>
+                    <td width="20%"><label for="title">Title *</label></td>
+                    <td width="40%">
+                        <input id="title" name="title" type="text" class="txt-fix-width" ng-model="vm.movie.Title" required />
+                        <span class="error" ng-if="(vm.movieDetailForm.title.$dirty || vm.movieDetailForm.$submitted) && vm.movieDetailForm.title.$error.required">This is a required field.</span>
+                    </td>
+                    <td width="40%"></td>
+                </tr>
+                <tr>
+                    <td><label for="description">Description *</label></td>
+                    <td>
+                        <textarea id="description" name="description" ng-model="vm.movie.Description" rows="8" cols="50" required></textarea>
+                        <span class="error" ng-if="(vm.movieDetailForm.description.$dirty || vm.movieDetailForm.$submitted) && vm.movieDetailForm.description.$error.required">This is a required field.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="director">Director *</label></td>
+                    <td>
+                        <input id="director" name="director" type="text" class="txt-fix-width" ng-model="vm.movie.Director" required />
+                        <span class="error" ng-if="(vm.movieDetailForm.director.$dirty || vm.movieDetailForm.$submitted) && vm.movieDetailForm.director.$error.required">This is a required field.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="releaseYear">Release Date *</label></td>
+                    <td>
+                        <div class="input-group"
+                             moment-picker="vm.movie.ReleaseDate"
+                             format="YYYY/MM/DD">
+                            <span class="input-group-addon">
+                                <i class="octicon octicon-calendar"></i>
+                            </span>
+                            <input class="form-control"
+                                   name="releasedate"
+                                   placeholder="Select a date"
+                                   ng-model="vm.movie.ReleaseDate"
+                                   ng-model-options="{ updateOn: 'blur' }"
+                                   required
+                                   ng-readonly="true">
+                        </div>
+                        <!--<input id="releaseYear" name="releaseYear" type="number" class="txt-fix-width" ng-model="vm.movie.ReleaseYear" required />-->
+                        <span class="error" ng-if="(vm.movieDetailForm.releasedate.$dirty || vm.movieDetailForm.$submitted) && vm.movieDetailForm.releasedate.$error.required">This is a required field.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="rating">Rating *</label></td>
+                    <td>
+                        <input id="rating" name="rating" type="number" ng-model="vm.movie.Rating" min="0" max="10" required />
+                        <span class="error" ng-if="(vm.movieDetailForm.rating.$dirty || vm.movieDetailForm.$submitted) && vm.movieDetailForm.rating.$error.required">This is a required field.</span>
+                        <span class="error" ng-if="vm.movieDetailForm.rating.$error.max">Maximum rating can be 10.</span>
+                        <span class="error" ng-if="vm.movieDetailForm.rating.$error.min">Minimum rating can be 0.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="language">Language*</label></td>
+                    <td>
+                        <input id="language" name="language" class="txt-fix-width" ng-model="vm.movie.Language" required />
+                        <span class="error" ng-if="(vm.movieDetailForm.language.$dirty || vm.movieDetailForm.$submitted) && vm.movieDetailForm.language.$error.required">This is a required field.</span>
+                    </td>
+                    <td valign="top"><input type="button" name="movieSubmit" class="float-left" ng-click="vm.saveMovieDetails()" value="Save" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div ng-form="vm.charactersForm" class="movies-container movie-tile " ng-if="vm.movie.Id">
+            <h3>Characters</h3>
+            <table>
+                <tr>
+                    <td width="20%"><label for="character">Character</label></td>
+                    <td width ="40%"><input name="character" type="text" class="txt-fix-width" ng-model="vm.newCharacter.Role" required /></td>
+                    <td width="40%"></td>
+                </tr>
+                <tr>
+                    <td><label for="actor">Actor</label></td>
+                    <td><input name="actor" type="text" class="txt-fix-width" ng-model="vm.newCharacter.Actor" required /></td>
+                    <td>
+                        <input type="button" name="characterSave" ng-click="vm.saveCharacter()" value="Save" />
+                    <td>
+                </tr>
+            </table>
+            <br />
+
+            <table style="border-collapse: collapse; width: 80%;" ng-if="vm.movieCast.length > 0">
+                <thead>
+                    <tr style="border-bottom: solid;border-width: 1px 0;">
+                        <td width="40%">Character</td>
+                        <td width="40%">Role</td>
+                        <!--<td width="20%">Action</td>-->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="character in vm.movieCast | orderBy: 'Role'">
+                        <td>{{character.Role}}</td>
+                        <td>{{character.Actor}}</td>
+                       <!--<td>
+                            <span><b>X</b></span>
+                        </td>-->
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <br />
+
+    </div>
+</div>
+<br />

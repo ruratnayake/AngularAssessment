@@ -1,0 +1,25 @@
+﻿<div data-ng-controller="movieListCtrl as vm"> 
+    <div data-ng-repeat="movie in vm.movies | orderBy: 'ReleaseDate' :true" class="movies-container container-border movie-tile">
+        <table>
+            <tr>
+                <td width="5%"></td>
+                <td width="70%"><h2>{{movie.Title}} ({{movie.ReleaseDate | date : 'yyyy' }})</h2></td>
+                <td width="20%" align="right"><star-rating-display rating='movie.Rating'> </star-rating-display></td>
+                <td width="5%"></td>
+            </tr>
+            <tr>
+                <td width="5%"></td>
+                <td width="70%"><p>{{movie.Description}}</p></td>
+                <td width="20%"></td>
+                <td width="5%"></td>
+            </tr>
+            <tr>
+                <td width="5%"></td>
+                <td width="70%"></td>
+                <td width="20%" align="right"><input type="button" class="margin-botton" value="Details" ui-sref="movie-detail({ Id: movie.Id })" /></td>
+                <td width="5%"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<br />

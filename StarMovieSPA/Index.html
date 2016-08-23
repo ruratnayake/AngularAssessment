@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Star Movies</title>
+    <!--Style sheets-->
+    <link href="Contents/css/common.css" rel="stylesheet" />
+    <link href="Contents/css/starRating.css" rel="stylesheet" />
+    <link href="Contents/css/angular-moment-picker.css" rel="stylesheet" />
+    <!--Libraries-->
+    <script src="Scripts/moment.min.js"></script>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-ui-router.min.js"></script>
+    <!--App specific Files-->
+    <!--Directives-->
+    <script src="App/Directives/starRating.js"></script>
+    <script src="App/Directives/angular-moment-picker.js"></script>
+    <!--modules and app configuration-->
+    <script src="App/app.js"></script>
+    <!--Models-->
+    <script src="App/Models/movieModel.js"></script>
+    <!--Services-->
+    <script src="App/Services/movieService.js"></script>
+    <!--Controllers-->
+    <script src="App/Controllers/movieListController.js"></script>
+    <script src="App/Controllers/movieDetailsController.js"></script>
+    <script src="App/Controllers/movieAddController.js"></script>
+</head>
+<body data-ng-app="app" data-ng-cloak>
+    <div class="container">
+        <div class="page-title">
+            <img class="logo margin-top" data-ng-src="Contents/images/star-movies.png" />
+        </div>
+        <div class='movies-container nav'>
+            <ul>
+                <li><a class="active" a ui-sref='home'>Home</a></li>
+                <li><a ui-sref='new-movie'>New Movie</a></li>
+                <li><a ui-sref='about'>About</a></li>
+            </ul>
+        </div>
+        <ui-view></ui-view>
+    </div>
+</body>
+</html>

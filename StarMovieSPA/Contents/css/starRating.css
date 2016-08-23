@@ -1,0 +1,12 @@
+﻿.a:after {
+  content: "\2605";
+  color: gold;
+  font-size: 25px;
+  padding-right: 2px;
+}
+
+.b:before {
+  content: "☆";
+  font-size: 25px;
+  padding-right: 2px;
+}
